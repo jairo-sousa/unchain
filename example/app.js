@@ -1,5 +1,6 @@
 import { Router } from "../src/unchain.js";
-import { Home, NotFound, Posts, Settings } from "./views.js";
+import { Home, NotFound, Settings } from "./views/views.js";
+import { Posts } from "./views/posts/posts.js";
 
 const outlet = document.getElementById("outlet");
 

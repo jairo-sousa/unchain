@@ -1,7 +1,10 @@
 /**
  * @typedef {Object} Component
+ * @property {Object} props - External data passed to the component.
+ * @property {Object} state - Internal mutable state.
  * @property {(outlet: HTMLElement) => void} mount
- * @property {() => void} [destroy]
+ * @property {() => void} update
+ * @property {() => void} destroy
  */
 
 /**
