@@ -51,6 +51,10 @@ class PostList extends Component {
 }
 
 export class Posts extends Component {
+  constructor(props) {
+    super({ ...props, stylesheet: "./views/posts/post.css" });
+  }
+
   template() {
     return /*html*/ `
       <div>
