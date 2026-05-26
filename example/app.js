@@ -1,4 +1,4 @@
-import { Router } from "../src/unchain.js";
+import { Router } from "unchain";
 import { Home, NotFound, Settings } from "./views/views.js";
 import { Posts } from "./views/posts/posts.js";
 

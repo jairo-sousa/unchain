@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My App</title>
 
-    <script src="app.js" type="module"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "unchain": "https://cdn.jsdelivr.net/gh/jairo-sousa/unchain@main/src/unchain.js"
+        }
+      }
+    </script>
+    <script type="module" src="app.js"></script>
   </head>
   <body>
     <div id="app">

@@ -1,4 +1,4 @@
-import { Component } from "../../../src/unchain.js";
+import { Component } from "unchain";
 
 const getPosts = () => [
   { description: "Hello world!" },
