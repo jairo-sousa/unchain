@@ -50,7 +50,14 @@ export class Router {
   navigate(path) {
     if (this.currentPath === path) return;
 
-    const route = this.routes[path] || this.routes["404"];
+    let param = null;
+    let routeKey = path;
+
+    if (path !== "/" && path.includes("/")) {
+      [routeKey, param] = path.split("/");
+    }
+
+    const route = this.routes[routeKey] || this.routes["404"];
 
     if (!route) throw new Error('Router: missing "404" route');
 
@@ -60,7 +67,10 @@ export class Router {
 
     this.outlet.innerHTML = "";
 
-    const component = new route.component();
+    const paramComponent = param && route.paramComponent;
+    const ComponentClass = paramComponent || route.component;
+
+    const component = new ComponentClass({ param });
 
     component.mount(this.outlet);
 

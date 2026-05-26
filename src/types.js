@@ -9,7 +9,8 @@
 
 /**
  * @typedef {Object} RouteConfig
- * @property {Component} component
+ * @property {typeof Component} component
+ * @property {typeof Component} [paramComponent]
  * @property {string} title
  */
 

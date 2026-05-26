@@ -1,16 +1,20 @@
 import { Component } from "unchain";
 
 const getPosts = () => [
-  { description: "Hello world!" },
-  { description: "Happy new year!" },
-  { description: "Unchain The Code!" },
+  { id: 0, description: "Hello world!" },
+  { id: 1, description: "Happy new year!" },
+  { id: 2, description: "Unchain The Code!" },
 ];
 
 class PostItem extends Component {
   template() {
+    const { id, description } = this.props.post;
     return /*html*/ `
-      <td>${this.props.post.description}</td>
-      <td><button id="btn-remove">Excluir</button></td>
+      <td>${description}</td>
+      <td><a href="#posts/${id}" class="btn-edit">Editar</a></td>
+      <td>
+        <button id="btn-remove" class="btn-remove">Excluir</button>
+      </td>
     `;
   }
 
@@ -52,7 +56,7 @@ class PostList extends Component {
 
 export class Posts extends Component {
   constructor(props) {
-    super({ ...props, stylesheet: "./views/posts/post.css" });
+    super({ ...props, stylesheet: "./views/posts/posts.css" });
   }
 
   template() {

@@ -1,6 +1,7 @@
 import { Router } from "unchain";
 import { Home, NotFound, Settings } from "./views/views.js";
 import { Posts } from "./views/posts/posts.js";
+import { PostForm } from "./views/posts/postForm.js";
 
 const outlet = document.getElementById("outlet");
 
@@ -20,6 +21,7 @@ router.add("404", {
 });
 router.add("posts", {
   component: Posts,
+  paramComponent: PostForm,
   title: "My App | Posts",
 });
 router.add("settings", {

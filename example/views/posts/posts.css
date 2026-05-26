@@ -1,0 +1,20 @@
+a {
+  text-decoration: none;
+}
+
+.btn-edit {
+  border: none;
+  border-radius: 8px;
+  background-color: #4299e1;
+  padding: 8px 12px;
+  color: white;
+}
+
+.btn-remove {
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: #e14242;
+  padding: 8px 12px;
+  color: white;
+  cursor: pointer;
+}
