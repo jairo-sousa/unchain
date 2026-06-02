@@ -1,10 +1,6 @@
 import { Component } from "unchain";
 
-const getPosts = () => [
-  { id: 0, description: "Hello world!" },
-  { id: 1, description: "Happy new year!" },
-  { id: 2, description: "Unchain The Code!" },
-];
+import { posts } from "../../db.js";
 
 class PostItem extends Component {
   template() {
@@ -69,7 +65,7 @@ export class Posts extends Component {
   }
 
   onUpdate() {
-    const postList = new PostList({ posts: getPosts() });
+    const postList = new PostList({ posts: posts.all() });
     postList.mount(this.$("#postList"));
   }
 }

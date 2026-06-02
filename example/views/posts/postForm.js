@@ -1,11 +1,5 @@
 import { Component } from "unchain";
-
-const posts = [
-  { description: "Hello world!" },
-  { description: "Happy new year!" },
-  { description: "Unchain The Code!" },
-];
-const getPostById = (id) => posts[id];
+import { posts } from "../../db.js";
 
 export class PostForm extends Component {
   constructor(props) {
@@ -13,7 +7,7 @@ export class PostForm extends Component {
   }
 
   onMount() {
-    const post = getPostById(this.props.param);
+    const post = posts.readById(this.props.param);
     this.setState({ post });
   }
 
