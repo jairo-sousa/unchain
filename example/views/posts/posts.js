@@ -1,6 +1,7 @@
 import { Component } from "unchain";
 
-import { posts } from "../../db.js";
+import { posts } from "@db";
+import { styles } from "@styles";
 
 class PostItem extends Component {
   template() {
@@ -52,7 +53,7 @@ class PostList extends Component {
 
 export class Posts extends Component {
   constructor(props) {
-    super({ ...props, stylesheet: "./views/posts/posts.css" });
+    super({ ...props, stylesheet: styles.posts });
   }
 
   template() {

@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My App</title>
 
+    <link rel="stylesheet" href="styles/global.css" />
+
     <script type="importmap">
       {
         "imports": {
-          "unchain": "https://cdn.jsdelivr.net/gh/jairo-sousa/unchain@v0.1.1/src/unchain.js"
+          "unchain": "https://cdn.jsdelivr.net/gh/jairo-sousa/unchain@v0.1.1/src/unchain.js",
+
+          "@routes": "./routes/index.js",
+
+          "@views": "./views/index.js",
+          "@views/posts": "./views/posts/posts.js",
+          "@views/post-form": "./views/posts/postForm.js",
+
+          "@db": "./db.js",
+
+          "@styles": "./styles/index.js"
         }
       }
     </script>

@@ -1,9 +1,11 @@
 import { Component } from "unchain";
-import { posts } from "../../db.js";
+import { posts } from "@db";
+
+import { styles } from "@styles";
 
 export class PostForm extends Component {
   constructor(props) {
-    super({ ...props, stylesheet: "./views/posts/post.css" });
+    super({ ...props, stylesheet: styles.post });
   }
 
   onMount() {
