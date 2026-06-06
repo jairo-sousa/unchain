@@ -1,3 +1,11 @@
-label{
+label {
   display: block;
+}
+
+.btn-confirm {
+  border: none;
+  border-radius: 8px;
+  background-color: #47e142;
+  padding: 8px 12px;
+  color: white;
 }

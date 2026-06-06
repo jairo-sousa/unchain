@@ -8,15 +8,14 @@ class PostItem extends Component {
     const { id, description } = this.props.post;
     return /*html*/ `
       <td>${description}</td>
-      <td><a href="#posts/${id}" class="btn-edit">Editar</a></td>
-      <td>
-        <button id="btn-remove" class="btn-remove">Excluir</button>
+      <td><a href="#posts/${id}" class="btn-edit">Edit</a>
+        <button class="btn-remove" class="btn-remove">Remove</button>
       </td>
     `;
   }
 
   onUpdate() {
-    this.$("#btn-remove").onclick = () => this.props.onRemove();
+    this.$(".btn-remove").onclick = () => this.props.onRemove();
   }
 }
 
@@ -27,7 +26,17 @@ class PostList extends Component {
   }
 
   template() {
-    return /*html*/ `<table><tbody id="posts"></tbody></table>`;
+    return /*html*/ `
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="posts"></tbody>
+    </table>
+  `;
   }
 
   onUpdate() {
@@ -37,16 +46,19 @@ class PostList extends Component {
 
       const props = {
         post,
-        onRemove: () => this.removePost(post),
+        onRemove: () => this.removePost(post.id),
       };
 
       new PostItem(props).mount(slot);
     });
   }
 
-  removePost(postToRemove) {
+  removePost(id) {
+    const isRemoved = posts.delete(id);
+    if (!isRemoved) return;
+
     this.setState({
-      posts: this.state.posts.filter((t) => t !== postToRemove),
+      posts: this.state.posts.filter((post) => post.id !== id),
     });
   }
 }
@@ -58,9 +70,12 @@ export class Posts extends Component {
 
   template() {
     return /*html*/ `
-      <div>
-        <h1>Posts</h1>
-        <table id="postList"></table>
+      <div class="posts" >
+        <div class="post-container" >
+          <h1>Posts</h1>
+          <a href="#posts/new" class="btn-create">Create new</a>
+          <table id="postList"></table>
+        </div>
       </div>
     `;
   }
