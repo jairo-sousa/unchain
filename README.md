@@ -8,6 +8,8 @@ A lightweight way to build web applications without unnecessary complexity.
 
 ## Getting Started
 
+> Unchain uses ES modules — open `index.html` directly in the browser won't work. See [Running locally](#running-locally).
+
 ```html
 <script type="importmap">
   {
@@ -30,7 +32,7 @@ import { Router, Component, Repository } from "unchain";
 ```js
 const router = new Router(
   { "/": { component: Home, title: "App | Home" } },
-  document.getElementById("outlet")
+  document.getElementById("outlet"),
 );
 
 router.add("404", { component: NotFound, title: "App | Not found" });
@@ -74,20 +76,20 @@ class Counter extends Component {
 
 ### Lifecycle
 
-| Method | When |
-|---|---|
-| `onMount()` | Once, after first mount |
-| `onUpdate()` | After every render — bind events and mount children here |
-| `onDestroy()` | Before component is removed |
+| Method        | When                                                     |
+| ------------- | -------------------------------------------------------- |
+| `onMount()`   | Once, after first mount                                  |
+| `onUpdate()`  | After every render — bind events and mount children here |
+| `onDestroy()` | Before component is removed                              |
 
 ### Methods
 
-| Method | Description |
-|---|---|
-| `mount(outlet)` | Mounts into an HTMLElement |
-| `setState(partial)` | Merges state and re-renders |
-| `$(selector)` | Queries inside component root |
-| `destroy()` | Removes component and cleans up |
+| Method              | Description                     |
+| ------------------- | ------------------------------- |
+| `mount(outlet)`     | Mounts into an HTMLElement      |
+| `setState(partial)` | Merges state and re-renders     |
+| `$(selector)`       | Queries inside component root   |
+| `destroy()`         | Removes component and cleans up |
 
 ### Stylesheet
 
@@ -120,12 +122,12 @@ onUpdate() {
 ```js
 const posts = new Repository();
 
-posts.create({ description: "Hello" });   // { id: 1, description: "Hello" }
-posts.readById(1);                         // { id: 1, description: "Hello" }
-posts.all();                               // [{ id: 1, ... }]
-posts.where({ status: "active" });         // filtered array
-posts.update(1, { description: "Hi" });    // { id: 1, description: "Hi" }
-posts.delete(1);                           // true
+posts.create({ description: "Hello" }); // { id: 1, description: "Hello" }
+posts.readById(1); // { id: 1, description: "Hello" }
+posts.all(); // [{ id: 1, ... }]
+posts.where({ status: "active" }); // filtered array
+posts.update(1, { description: "Hi" }); // { id: 1, description: "Hi" }
+posts.delete(1); // true
 ```
 
 ### Singleton via module
@@ -148,7 +150,7 @@ ES modules are cached by the browser — same instance everywhere.
 ## Project structure
 
 ```
-app.html
+index.html
 app.js
 db.js
 routes/
@@ -191,3 +193,28 @@ Extended import map:
 ## Example
 
 A full CRUD example is available in the `/example` directory.
+
+## Running locally
+
+Unchain uses ES modules and import maps, so you need a server — opening `index.html` directly won't work.
+
+**Option 1 — Live Server** (no Node required)
+
+- Use the [VS Code Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) or any static server of your choice.
+
+**Option 2 — Node.js (no dependencies)**
+
+Copy `example/server-http.js` to your project root and run:
+
+```bash
+node server-http.js
+```
+
+**Option 3 — Express**
+
+Copy `example/server-express.js`, install express and run:
+
+```bash
+ npm install express
+ node server-express.js
+```
