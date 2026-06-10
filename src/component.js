@@ -32,19 +32,19 @@ export class Component {
   mount(outlet) {
     this.outlet = outlet;
     this._mountStyle();
-    this.update();
     this.onMount();
   }
 
   _mountStyle() {
     if (!this.props.stylesheet) return;
     if (document.querySelector(`link[data-unchain="${this.props.stylesheet}"]`))
-      return;
+      return this.update();
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = this.props.stylesheet;
     link.dataset.unchain = this.props.stylesheet;
+    link.onload = () => this.update();
     document.head.appendChild(link);
     this._styleEl = link;
   }
