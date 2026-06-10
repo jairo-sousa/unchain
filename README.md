@@ -1,5 +1,7 @@
 # 🌿 Unchain
 
+[English](README.md) | [Português](README.pt-BR.md)
+
 A lightweight way to build web applications without unnecessary complexity.
 
 > Not for production use. Intended for small apps, rapid prototyping, and learning.
